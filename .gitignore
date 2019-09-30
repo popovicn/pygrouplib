@@ -1,0 +1,5 @@
+.pypirc
+dist/
+dist/*
+pygrouplib.egg-info/
+pygrouplib.egg-info/*
