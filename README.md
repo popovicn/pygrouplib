@@ -1,6 +1,7 @@
 # pygrouplib
 Library for dividing entities into groups based on numeric or text value
 
+
 ## Quick start
 ```python
 from pygrouplib import NumericGrouper, TextGrouper
@@ -36,3 +37,37 @@ print(*groups, sep="\n")
 
 
 ```
+
+
+## Installation
+Pygrouplib is published through PyPi so you can install it with `easy_install` or `pip`. The package name is `pygrouplib`, and the same package works on Python 2 and Python 3. Make sure you use the right version of `pip` or `easy_install` for your Python version (these may be named `pip3` and `easy_install3` respectively if you’re using Python 3).
+```bash
+$ easy-install pygrouplib
+```
+```
+$ pip install pygrouplib
+```
+
+
+## Documentation
+
+
+### NumericGrouper
+#### group()
+- Groups elements into soubgroups based on numeric value.
+- Arguments:
+  - **entities** - List of entities to be divided into groups.
+  - **groups** - Number of resulting subgroups. The default value is None, in which case it is calculated based on provided values from entities.
+  - **key** Function of one argument that is used to extract comparison key from each element in iterable (for example, `key=lambda x: x['value']`). The default value is None (compare the elements directly).
+- Returns a list of entities grouped into lists.
+
+### TextGrouper
+#### group()
+- Groups elements into soubgroups based on text value. Similarity is calculated using Levenshtein algorithm.
+- Arguments:
+  - **entities** - List of elements to be divided into groups.
+  - **similarity_limit** - Maximum Levenshtein distance between words to be consiedered as similar. The default value is calculated as 1 + (1 for each chars_per_error characters).
+  - **chars_per_error** - Number of characters per 1 error allowed. Levenshtein distance is considered as a number of errors. The default value is 8 (1 error is allowed for each 8 characters). 
+  - **ignore_list** - List of patterns to ignore when calculating text similarity. For example, with `ignore_list=['\\d']`, *'word123'* and *'123word45'* are considered equal.
+  - **key** - Function of one argument that is used to extract comparison key from each element in iterable (for example, `key=str.lower`). The default value is None (compare the elements directly).
+- Returns a list of entities grouped into lists.
