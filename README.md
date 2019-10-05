@@ -42,7 +42,7 @@ print(*groups, sep="\n")
 ## Installation
 Pygrouplib is published through PyPi so you can install it with `easy_install` or `pip`. The package name is `pygrouplib`, and the same package works on Python 2 and Python 3. Make sure you use the right version of `pip` or `easy_install` for your Python version (these may be named `pip3` and `easy_install3` respectively if you’re using Python 3).
 ```bash
-$ easy-install pygrouplib
+$ easy_install pygrouplib
 ```
 ```
 $ pip install pygrouplib
