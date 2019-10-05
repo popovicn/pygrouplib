@@ -71,3 +71,8 @@ $ pip install pygrouplib
   - **ignore_list** - List of patterns to ignore when calculating text similarity. For example, with `ignore_list=['\\d']`, *'word123'* and *'123word45'* are considered equal.
   - **key** - Function of one argument that is used to extract comparison key from each element in iterable (for example, `key=str.lower`). The default value is None (compare the elements directly).
 - Returns a list of entities grouped into lists.
+#### levenshtein_distance()
+- Calculates Leveshtein distance between two strings. Levenshtein distance between two words is the minimum number of single-character edits (i.e. insertions, deletions, or substitutions) required to change one word into the other. Comparison is case sensitive.
+- Arguments:
+  - **s1**, **s2** - Strings to be compared. Leading and trailing spaces are ignored.
+  - **ignore_list** - List of patterns to be ignored when comparing strings. For example, with `ignore_list=['\\d']`, distance between *'word123'* and *'123word45'* is 0. Default value is empty list.

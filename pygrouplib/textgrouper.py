@@ -3,8 +3,35 @@ import re
 class TextGrouper:
 
 
-	def _levenshtein_distance(self, s1, s2, ignore_list):
-		"""Calculates Leveshtein distance between two strings. """
+	def _calculate_limit(self, text, limit, chars_per_error): 
+		"""Calculate max Levenshtein distance based on provided limit. """
+
+		cpe_limit = (1 + len(text) // chars_per_error)
+		if limit:
+			return min(limit, cpe_limit)
+		else:
+			return cpe_limit
+
+
+	def levenshtein_distance(self, s1, s2, ignore_list=[]):
+		"""Calculates Leveshtein distance between two strings. 
+		
+		Levenshtein distance between two words is the minimum number of 
+		single-character edits (i.e. insertions, deletions, or substitutions) 
+		required to change one word into the other.
+
+		Comparison is case sensitive.
+		
+		Arguments:
+
+			s1, s2 - Strings to be compared. Leading and trailing spaces are ignored.
+
+		
+			ignore_list - List of patterns to be ignored when comparing strings. 
+				For example, with ignore_list=['\\d'], distance between 'word123' 
+				and '123word45' is 0. Default value is empty list.
+
+		"""
 
 		# Remove irrelevant patterns
 		for pattern in ignore_list:
@@ -32,16 +59,6 @@ class TextGrouper:
 			previous_row = current_row
 
 		return previous_row[-1]
-
-
-	def _calculate_limit(self, text, limit, chars_per_error): 
-		"""Calculate max Levenshtein distance based on provided limit. """
-
-		cpe_limit = (1 + len(text) // chars_per_error)
-		if limit:
-			return min(limit, cpe_limit)
-		else:
-			return cpe_limit
 
 	
 	def group(self, entities, similarity_limit=None, chars_per_error=8, ignore_list=[], key=None):
