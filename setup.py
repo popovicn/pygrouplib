@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
 	name="pygrouplib",
-	version="1.0.2",
+	version="1.0.3",
 	author="Nenad Popovic",
 	author_email="popovic0706@gmail.com",
 	description="Library for dividing entities into groups based on numeric or text value.",
