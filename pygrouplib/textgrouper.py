@@ -43,7 +43,7 @@ class TextGrouper:
 		s2 = s2.strip()
 
 		if len(s1) < len(s2):
-			return self._levenshtein_distance(s2, s1, [])
+			return self.levenshtein_distance(s2, s1, [])
 
 		if len(s2) == 0:
 			return len(s1)
@@ -123,7 +123,7 @@ class TextGrouper:
 					s2 = key(entities[j]) if key else entities[j]
 
 					# Calculate distance and write distance_matrix row i
-					distance = self._levenshtein_distance(s1, s2, ignore_list)
+					distance = self.levenshtein_distance(s1, s2, ignore_list)
 					distance_matrix[i][j] = (distance,j)
 					distance_matrix[j][i] = (distance,i)
 					j += 1
