@@ -1,5 +1,5 @@
 # pygrouplib
-Library for dividing entities into groups based on numeric or text value
+Python lightweight library for entities clustering
 
 
 ## Quick start
